@@ -1,0 +1,33 @@
+
+.biller{
+    width: 90%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.first-child{
+  display: flex;
+  margin: 1rem auto;
+}
+
+.first-child .selector{
+    flex: 1;
+}
+
+.first-child .input{
+    flex: 0.25;
+}
+
+.first-child .button{
+    flex: 0.25;
+}
+
+.first-child .selector,.input,.button{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+.first-child .selector,.input{
+    margin-right: 1rem;
+}
