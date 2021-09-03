@@ -11,7 +11,7 @@ export const NavbarComp:React.FC = ()=> {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text style={{color:'#fff'}}>
-                        Signed in as: <a href="#login" style={{color:'#fff'}}>Mark Otto</a>
+                        <Link className='link' to='/add-medicine' style={{color:'#fff'}}>Add Medicine To Store</Link>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "name": "Paracetamol-500",
+      "price": 1
+    },
+    {
+      "name": "Dolo-650",
+      "price": 5
+    },
+    {
+      "name": "Pentanerv nt-100",
+      "price": 10
+    },
+    {
+      "name": "Clopivas Ap 150",
+      "price": 8
+    },
+    {
+      "name": "Roseday 10",
+      "price": 12
+    },
+    {
+      "name": "Venizep ip 50",
+      "price": "8",
+      "id": "ce2ad9ce-1935-42fa-a8c8-8e416e71b5fd"
+    },
+    {
+      "name": "Betavert 16",
+      "price": "12",
+      "id": "cb2996c1-cb99-4ad7-9458-b1d8b7a90697"
+    },
+    {
+      "name": "Prolomet XL 50",
+      "price": "5",
+      "id": "c869f7f7-9373-4884-8754-8b7ee4bcded4"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import './Print.css'
 export const Print = () => {
 
     const context=useContext(Context)
-    const {state:{items},dispatch}=context
+    const {state:{cart},dispatch}=context
 
     return (
         <div className='print'>
@@ -33,7 +33,7 @@ export const Print = () => {
   </thead>
   <tbody>
       {
-        items.map((itm,ind)=>{
+        cart.map((itm,ind)=>{
            return <tr key={ind}>
                <td>{ind+1}</td>
                 <td>{itm.name}</td>
@@ -44,13 +44,13 @@ export const Print = () => {
        })
       }
       {
-        items.length!==0 &&
+        cart.length!==0 &&
         <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td><h3>Grand Total</h3></td>
-                  <td><h3>{findGrantTotal(items)}</h3></td>
+                  <td><h3>RS. {findGrantTotal(cart)}</h3></td>
                 </tr>
       }        
   </tbody>

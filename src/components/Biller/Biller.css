@@ -31,3 +31,9 @@
 .first-child .selector,.input{
     margin-right: 1rem;
 }
+
+.trash{
+    margin-left: 10px;
+    color: #9ca175;
+    cursor: pointer;
+}

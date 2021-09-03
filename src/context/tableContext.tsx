@@ -1,6 +1,6 @@
 import {createContext, useReducer} from 'react'
 import { ContextModel,Istate } from './types'
-import reducer from './reducer'
+import {reducer} from './reducer'
 
 export const Context=createContext({} as ContextModel)
 
@@ -11,7 +11,9 @@ type Props={
 export const TableProvider:React.FC<Props> = ({children}) => {
 
     const intialState:Istate={
-        items:[]
+        allItems:[],
+        cart:[],
+        success:false
     }
     
 

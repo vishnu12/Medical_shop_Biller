@@ -1,17 +1,22 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { Table ,Button,Form} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {FaTrashAlt} from 'react-icons/fa'
 import './Biller.css'
-import data from '../../data'
-import {findGrantTotal, findPriceByname, itemExists, List } from '../../helpers'
+import {findGrantTotal, findPriceByname, getItemsFromStore, itemExists, List } from '../../helpers'
 import {Context} from '../../context/tableContext'
 
 
 export const Biller:React.FC = () => { 
 
+  useEffect(()=>{
+    getItemsFromStore(dispatch)
+    dispatch({type:'CLEAR_ADD_STORE_SUCCESS_STATE'})
+   },[])
+
   const context=useContext(Context)
-  const {state:{items},dispatch}=context
- 
+  const {state:{allItems,cart},dispatch}=context
+
    const [name, setName] = useState<string>('')
    const [quantity, setQuantity] = useState<number>(1)
 
@@ -27,19 +32,23 @@ export const Biller:React.FC = () => {
     if(name==='Choose Medicine'||name===''||name===null){
       alert('Please choose the medicine')
       return
-    }else if(itemExists(name,items)){
+    }else if(itemExists(name,cart)){
       alert("This item is already added")
       return 
     }else{
       const listObj:List={
         name,
-        price:findPriceByname(name),
+        price:findPriceByname(name,allItems),
         quantity,
-        total:findPriceByname(name)*quantity
+        total:findPriceByname(name,allItems)*quantity
       }
       //code to be written
-      dispatch({type:'ADD_ITEMS',payload:listObj})
+      dispatch({type:'ADD_ITEMS_TO_CART',payload:listObj})
     }
+  }
+
+  function handleTrash(name:string){
+    dispatch({type:'REMOVE_FROM_CART',payload:name})
   }
  
     return (
@@ -48,7 +57,7 @@ export const Biller:React.FC = () => {
         <Form.Select className='selector' id='selector' onChange={handleNameChange}>
       <option>Choose Medicine</option>
       {
-        data.map((itm,key)=><option key={key} value={itm.name}>{itm.name}</option>)
+        allItems.map((itm,key)=><option key={key} value={itm.name}>{itm.name}</option>)
       }
       </Form.Select>
       <Form.Control className='input' type="number" min="0" placeholder="Choose Quantity" 
@@ -68,10 +77,10 @@ export const Biller:React.FC = () => {
   </thead>
   <tbody>
       {
-        items.map((itm,ind)=>{
+        cart.map((itm,ind)=>{
            return <tr key={ind}>
                <td>{ind+1}</td>
-                <td>{itm.name}</td>
+                <td>{itm.name}<span className='trash' onClick={()=>handleTrash(itm.name)}><FaTrashAlt /></span></td>
                 <td>{itm.price}</td>
                 <td>{itm.quantity}</td>
                 <td>{itm.total}</td>
@@ -79,13 +88,13 @@ export const Biller:React.FC = () => {
        })
       }
       {
-        items.length!==0 &&
+        cart.length!==0 &&
         <tr>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td><h3>Grand Total</h3></td>
-                  <td><h3>{findGrantTotal(items)}</h3></td>
+                  <td><h3>RS. {findGrantTotal(cart)}</h3></td>
                 </tr>
                 
       }        
