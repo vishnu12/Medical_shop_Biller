@@ -57,10 +57,10 @@ export const Biller:React.FC = () => {
         <Form.Select className='selector' id='selector' onChange={handleNameChange}>
       <option>Choose Medicine</option>
       {
-        allItems.map((itm,key)=><option key={key} value={itm.name}>{itm.name}</option>)
+        allItems?.map((itm,key)=><option key={key} value={itm.name}>{itm.name}</option>)
       }
       </Form.Select>
-      <Form.Control className='input' type="number" min="0" placeholder="Choose Quantity" 
+      <Form.Control className='input' type="number" min="0" placeholder="Quantity" 
       onChange={hadleQuantityChange}/>
       <Button className='button' variant='outline-dark' onClick={handleClick}>Add</Button>
         </div>
@@ -77,7 +77,7 @@ export const Biller:React.FC = () => {
   </thead>
   <tbody>
       {
-        cart.map((itm,ind)=>{
+        cart?.map((itm,ind)=>{
            return <tr key={ind}>
                <td>{ind+1}</td>
                 <td>{itm.name}<span className='trash' onClick={()=>handleTrash(itm.name)}><FaTrashAlt /></span></td>

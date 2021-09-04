@@ -57,7 +57,7 @@ export const Print = () => {
 </Table>
 
 <Link to ='/' className='btn btn-outline-success'>Back Home</Link>
-<Button variant='outline-success' className='btn'>Print</Button>
+<Button variant='outline-success' className='btn' onClick={()=>window.print()}>Print</Button>
         </div>
     )
 }

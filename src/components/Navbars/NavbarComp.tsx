@@ -7,7 +7,7 @@ export const NavbarComp:React.FC = ()=> {
     return (
         <Navbar bg='dark'>
             <Container>
-            <Link className='link' to='/'><Navbar.Brand style={{color:'#fff'}}>Raju Medicals</Navbar.Brand></Link>
+            <Link className='link' to='/'><Navbar.Brand style={{color:'#fff',fontWeight:700,fontSize:'1.5rem'}}>Raju Medicals</Navbar.Brand></Link>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text style={{color:'#fff'}}>

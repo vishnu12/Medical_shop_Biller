@@ -1,8 +1,6 @@
 import { Action } from "../context/types"
 
-// import data from '../data'
-const URL="http://localhost:5000/data"
-
+const URL="http://localhost:5000"
 
 export interface List{
    name:string
@@ -29,14 +27,14 @@ export const findGrantTotal=(list:List[]):number=>{
 }
 
 export const getItemsFromStore=async (dispatch:React.Dispatch<Action>)=>{
-  const data= await (await fetch(URL)).json()
+  const data= await (await fetch(`${URL}/data`)).json()
   dispatch({type:'GET_ALL_ITEMS',payload:data})
 }
 
 export const addMedicineToStore=async (item:Omit<List,'quantity'|'total'>,dispatch:React.Dispatch<Action>)=>{
   console.log(item);
   try {
-    await fetch(URL,{
+    await fetch(`${URL}/data`,{
       method:'POST',
       headers:{
         'Accept': 'application/json',
